@@ -1,6 +1,6 @@
-import axios from "axios";
 import { createSearchParams, useLoaderData } from "react-router";
 import ListComponent from "../../components/products/listComponent";
+import jwtAxios from "../../util/jwtUtil";
 
 export async function loadProducts({request}) {
 
@@ -10,7 +10,7 @@ export async function loadProducts({request}) {
 
   const queryStr = createSearchParams({page,size}).toString()
 
-  const res = await axios.get(`http://localhost:8080/api/products/list?${queryStr}`)
+  const res = await jwtAxios.get(`http://localhost:8080/api/products/list?${queryStr}`)
 
   return res.data
 }
